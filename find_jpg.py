@@ -28,6 +28,10 @@ def find_jpg_with_creation_date(folder, copy_to):
                 if "DateTime" not in exif and "DateTimeOriginal" not in exif:
                     result.append(fpath)
                     to_fpath = os.path.join(copy_to, "unsorted")
+                
+                    if not os.path.exists(to_fpath):
+                        os.makedirs(to_fpath)
+                    
                     to_fpath = os.path.join(to_fpath, f)
                     if os.path.exists(to_fpath):
                         continue
